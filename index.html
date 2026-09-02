@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홍성찬 — 백엔드 개발자 포트폴리오</title>
+<meta name="description" content="운영 환경을 먼저 생각하는 백엔드 개발자 홍성찬의 포트폴리오. Spring Boot, JPA, 동시성 제어, AWS 클라우드 프로젝트 경험.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a href="#top" class="logo">HSC<span class="logo-dot">.</span></a>
+    <nav class="main-nav" aria-label="주 메뉴">
+      <a href="#about">소개</a>
+      <a href="#stack">기술</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#contact">연락처</a>
+    </nav>
+    <a class="header-cta" href="https://github.com/hongsungchan88" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">BACKEND DEVELOPER · SPRING BOOT</p>
+      <h1 class="hero-title">
+        운영 환경을 먼저 생각하는<br>
+        백엔드 개발자, <span class="hero-name">홍성찬</span>입니다.
+      </h1>
+      <p class="hero-desc">
+        ㈜현대벤디스에서 7개월간 운영 중인 Spring 서비스를 유지보수하며,
+        실제 서비스 환경을 고려해 코드를 작성해 왔습니다.
+        동시성 제어와 성능 최적화에 관심이 많아, 부하 테스트로 문제를 직접
+        재현하고 검증하며 해결합니다. 최근에는 GitHub Webhook과 멀티 LLM API를 엮은
+        AI 코드리뷰 파이프라인을 설계하며 AI를 서비스에 안정적으로 붙이는 일을 다뤘습니다.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">프로젝트 보러가기</a>
+        <a href="#contact" class="btn btn-ghost">연락처</a>
+        <a href="https://github.com/hongsungchan88" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+        <a href="https://app.notion.com/p/3818bb8f4e6e8151afd7d6b98aa9af19" target="_blank" rel="noopener" class="btn btn-ghost">Notion ↗</a>
+      </div>
+      <ul class="hero-meta">
+        <li><span class="dot dot-blue"></span>sungchan0820@gmail.com</li>
+        <li><span class="dot dot-green"></span>010-7287-8427</li>
+        <li><span class="dot dot-yellow"></span>서울 노원구</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= SIGNATURE DEMO ================= -->
+  <section class="demo-section" aria-labelledby="demo-title">
+    <div class="section-inner">
+      <p class="kicker">SIGNATURE · 실제 프로젝트에서 검증한 문제</p>
+      <h2 id="demo-title" class="section-title-serif">
+        1,000명이 동시에 같은 좌석을 누르면<br>어떤 일이 벌어질까요?
+      </h2>
+      <p class="section-desc">
+        아래는 <strong>실시간 티켓 예매 시스템</strong> 프로젝트에서 JMeter로 실제 검증한
+        동시성 문제를 축소해 재현한 시뮬레이션입니다. 좌석 하나에 여러 요청이 동시에
+        도달할 때, 락(Lock) 적용 여부에 따라 결과가 어떻게 달라지는지 직접 눌러보세요.
+      </p>
+
+      <div class="demo-box">
+        <div class="demo-controls">
+          <label class="lock-toggle">
+            <input type="checkbox" id="lockToggle" checked>
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span class="toggle-label">JPA Optimistic Lock 적용</span>
+          </label>
+          <button id="rushBtn" class="btn btn-primary btn-small">동시 요청 5개 발사</button>
+          <button id="resetBtn" class="btn btn-ghost btn-small">초기화</button>
+        </div>
+
+        <div class="demo-stage">
+          <div class="seat-card" id="seatCard">
+            <span class="seat-label">A열 17번</span>
+            <span class="seat-status" id="seatStatus">예매 가능</span>
+          </div>
+          <div class="request-log" id="requestLog" aria-live="polite"></div>
+        </div>
+
+        <p class="demo-footnote">
+          * 브라우저에서 동작하는 개념 시뮬레이션입니다. 실제 검증은 JMeter로 1,000개 동시 요청을 발생시켜
+          수행했으며, 자세한 과정은 <a href="#ticket">티켓 예매 시스템 프로젝트</a>에서 확인할 수 있습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT / TIMELINE ================= -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <p class="kicker">CAREER TIMELINE</p>
+      <h2 class="section-title-serif">경력 및 교육 이력</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2020.11 – 2021.05<br><span>7개월 · 특성화고 선취업</span></div>
+          <div class="timeline-body">
+            <h3>㈜현대벤디스 · 제품본부</h3>
+            <p>
+              대경정보산업고 3학년 때 선취업 전형으로 입사해, 운영 중인 Spring 기반 웹
+              애플리케이션의 요구사항 분석·신규 기능 추가·유지보수를 담당했습니다. 프로덕션 코드를 다루며 기존 서비스에 미치는 영향(Side-Effect)을
+              최소화하는 안전한 수정 방식을 익혔고, 실무의 형상 관리·배포 프로세스를 경험하며
+              가독성과 유지보수성 중심의 코드 작성 습관을 갖췄습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024.03 – 2027.02<br><span>졸업예정</span></div>
+          <div class="timeline-body">
+            <h3>인덕대학교 · 컴퓨터소프트웨어학과</h3>
+            <p>
+              학점 4.21 / 4.5. 자료구조·알고리즘, 데이터베이스, 네트워크 등 전공 기초를
+              다지는 한편, 빅데이터 분석 경진대회 최우수상, 온라인 쇼핑몰 개발 경진대회 은상 등
+              교내 대회에 참여하며 실습 역량을 키웠습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025.11 – 2026.08<br><span>9개월 · 1024시간</span></div>
+          <div class="timeline-body">
+            <h3>대우교육개발원 · AI 에이전트 클라우드·보안코딩 개발자 양성 과정</h3>
+            <p>
+              프론트엔드(HTML/CSS/JS)~백엔드(JSP, JDBC, RDBMS) 웹 개발 전체 사이클을 학습하고,
+              AWS 클라우드 인프라와 시큐어코딩을 실습했습니다. Spring AI 프레임워크로 LLM 연동·
+              Tool Calling·RAG·MCP 개념과 구현 패턴을 익혔습니다. 요구사항 정의서부터 테이블
+              정의서까지 전 과정을 직접 기획하는 현장기업 프로젝트 2건(SPORTS PREDICT LIVE, COGI)을
+              신규 개발로 수행했습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= CERTIFICATION & AWARDS ================= -->
+  <section class="section" id="awards">
+    <div class="section-inner">
+      <p class="kicker">CERTIFICATION &amp; AWARDS</p>
+      <h2 class="section-title-serif">자격증 및 수상</h2>
+
+      <div class="side-grid">
+        <div class="side-card">
+          <h3>정보처리산업기사</h3>
+          <p class="side-meta">2026.05 · 한국산업인력공단</p>
+          <p>필기 합격. 실기 준비 중입니다.</p>
+        </div>
+        <div class="side-card">
+          <h3>빅데이터 분석 경진대회 최우수상</h3>
+          <p class="side-meta">2026 · 인덕대학교 · 메타버스 오딧세이</p>
+          <p>고차원 데이터를 다루는 분석 파이프라인을 설계해 최우수상을 받았습니다.</p>
+        </div>
+        <div class="side-card">
+          <h3>데이터 분석 경진대회 데이터 마스터상</h3>
+          <p class="side-meta">2025 · 인덕대학교 · Analyze Festa</p>
+          <p>공공데이터 전처리부터 예측 모델링까지 전 과정을 수행했습니다.</p>
+        </div>
+        <div class="side-card">
+          <h3>온라인 쇼핑몰 개발 경진대회 은상</h3>
+          <p class="side-meta">2025 · 인덕대학교</p>
+          <p>MVC 구조 기반 커머스 웹 서비스를 기획·개발했습니다.</p>
+        </div>
+        <div class="side-card">
+          <h3>C++ 사용 설명서 경진대회 동상</h3>
+          <p class="side-meta">2024 · 인덕대학교</p>
+          <p>언어 개념을 남에게 설명하는 문서를 직접 작성했습니다.</p>
+        </div>
+        <div class="side-card">
+          <h3>컴퓨터활용능력 2급 · ITQ 3종</h3>
+          <p class="side-meta">2018–2019 · 대한상공회의소 / 한국생산성본부</p>
+          <p>아래한글·한셀·한쇼 A등급.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TECH STACK ================= -->
+  <section class="section section-alt" id="stack">
+    <div class="section-inner">
+      <p class="kicker">TECH STACK</p>
+      <h2 class="section-title-serif">기술 스택</h2>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h3 class="stack-cat cat-blue">Backend</h3>
+          <div class="tag-row">
+            <span class="tag tag-blue">Java</span><span class="tag tag-blue">Spring Boot</span>
+            <span class="tag tag-blue">Spring Security</span><span class="tag tag-blue">JPA</span>
+            <span class="tag tag-blue">JWT</span><span class="tag tag-blue">REST API</span>
+            <span class="tag tag-blue">QueryDSL</span><span class="tag tag-blue">WebSocket</span>
+            <span class="tag tag-blue">PHP</span><span class="tag tag-blue">Laravel</span>
+          </div>
+        </div>
+        <div class="stack-card">
+          <h3 class="stack-cat cat-blue">AI Integration</h3>
+          <div class="tag-row">
+            <span class="tag tag-blue">OpenAI API</span><span class="tag tag-blue">Claude · Gemini · Groq API</span>
+            <span class="tag tag-blue">LLM 연동</span><span class="tag tag-blue">Prompt Engineering</span>
+            <span class="tag tag-blue">Tool Calling</span><span class="tag tag-blue">RAG</span>
+            <span class="tag tag-blue">MCP</span>
+          </div>
+          <p class="stack-note">Tool Calling·RAG·MCP는 Spring AI 기반 학습</p>
+        </div>
+        <div class="stack-card">
+          <h3 class="stack-cat cat-green">Database</h3>
+          <div class="tag-row">
+            <span class="tag tag-green">MySQL</span><span class="tag tag-green">MariaDB</span>
+            <span class="tag tag-green">Redis</span>
+          </div>
+        </div>
+        <div class="stack-card">
+          <h3 class="stack-cat cat-yellow">Frontend</h3>
+          <div class="tag-row">
+            <span class="tag tag-yellow">React</span><span class="tag tag-yellow">TypeScript</span>
+            <span class="tag tag-yellow">Zustand</span><span class="tag tag-yellow">React Query</span>
+            <span class="tag tag-yellow">Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="stack-card">
+          <h3 class="stack-cat cat-red">Data</h3>
+          <div class="tag-row">
+            <span class="tag tag-red">Python</span><span class="tag tag-red">Scikit-learn</span>
+            <span class="tag tag-red">Pandas</span><span class="tag tag-red">NumPy</span>
+            <span class="tag tag-red">R</span>
+          </div>
+        </div>
+        <div class="stack-card">
+          <h3 class="stack-cat cat-blue">Cloud · Infra &amp; Tools</h3>
+          <div class="tag-row">
+            <span class="tag tag-blue">AWS EC2</span><span class="tag tag-blue">RDS</span>
+            <span class="tag tag-blue">S3</span><span class="tag tag-blue">IAM</span>
+            <span class="tag tag-blue">Docker</span><span class="tag tag-blue">Linux</span><span class="tag tag-blue">시큐어코딩</span>
+            <span class="tag tag-blue">Git</span><span class="tag tag-blue">Apache JMeter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CORE PROJECTS ================= -->
+  <section class="section" id="projects">
+    <div class="section-inner">
+      <p class="kicker">CORE PROJECTS</p>
+      <h2 class="section-title-serif">핵심 프로젝트</h2>
+      <p class="section-desc">
+        백엔드 개발자로서의 문제 해결 역량과 협업 경험을 잘 보여주는 대표 프로젝트입니다.
+      </p>
+
+      <!-- Ticket Booking -->
+      <article class="project-card" id="ticket">
+        <div class="project-head">
+          <div>
+            <p class="project-eyebrow">개인 프로젝트 · 2026.04 – 2026.06</p>
+            <h3 class="project-title">실시간 티켓 예매 시스템</h3>
+          </div>
+          <button class="expand-btn" data-target="detail-ticket" aria-expanded="false">자세히 보기</button>
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-mono">Spring Boot 4.0.5</span><span class="tag tag-mono">Java 21</span>
+          <span class="tag tag-mono">Spring Security</span><span class="tag tag-mono">JPA</span>
+          <span class="tag tag-mono">JWT</span><span class="tag tag-mono">MySQL</span>
+          <span class="tag tag-mono">Apache JMeter</span>
+        </div>
+        <p class="project-summary">
+          다수의 사용자가 동시에 좌석을 예매하는 상황을 가정하고, 동시성 제어를 직접 구현한
+          콘서트·공연 좌석 예매 시스템입니다. JPA Optimistic Lock으로 Race Condition을 해결하고,
+          JMeter 부하 테스트로 실제 동작을 검증했습니다.
+        </p>
+        <p class="project-solve"><span>문제 해결</span>JMeter 1,000개 동시 요청으로 정합성 붕괴를 먼저 재현한 뒤, 읽기 비중이 높은 서비스 특성을 근거로 Optimistic Lock을 택해 중복 예매 0건을 검증했습니다.</p>
+
+        <div class="project-detail" id="detail-ticket" hidden>
+          <h4>주요 문제 및 해결 과정</h4>
+          <ul class="detail-list">
+            <li><strong>동시성 이슈 해결 및 테스트</strong> — JMeter로 1,000개의 동시 요청 부하 테스트를 진행해, 락 미적용 상태에서는 하나의 좌석에 동시 요청 수만큼 예매가 중복 성공하는 정합성 붕괴를 직접 재현했습니다. JPA <code>@Version</code> 기반 Optimistic Lock 적용 후에는 최초 커밋된 트랜잭션만 성공하고 나머지는 버전 충돌 예외로 처리되어, 동일 조건에서 중복 예매 0건을 검증했습니다.</li>
+            <li><strong>Optimistic Lock 채택 이유</strong> — 예매 시스템 특성상 좌석 선점(Update)보다 조회(Read) 비율이 압도적으로 높을 것으로 예상해, DB에 직접 락을 거는 Pessimistic Lock 대신 애플리케이션 단에서 버전을 관리하는 Optimistic Lock을 채택하여 DB 데드락 위험과 성능 저하를 최소화했습니다.</li>
+            <li><strong>버전 마이그레이션 이슈 해결</strong> — Spring Boot 4.x 도입 시 3.x와 달라진 설정·의존성 충돌을 공식 마이그레이션 가이드를 참고해 해결하고, 변경 사항을 문서로 정리했습니다.</li>
+          </ul>
+          <h4>주요 구현 사항</h4>
+          <ul class="detail-list-plain">
+            <li>Spring Security와 JWT를 활용한 사용자 인증 및 API 접근 권한 제어</li>
+            <li>Spring Data JPA를 활용한 공연·좌석 관리 REST API 설계</li>
+            <li>JPA <code>@Version</code>을 통한 Optimistic Lock 구현으로 중복 예매 방지</li>
+            <li>Apache JMeter를 활용한 1,000개 동시 요청 테스트 및 검증 완료</li>
+          </ul>
+          <div class="mockup-row">
+            <div class="mockup-card">
+              <div class="mockup-chrome"><span></span><span></span><span></span></div>
+              <div class="mockup-body mockup-success">✓ 예매 성공<br><small>Optimistic Lock — 먼저 커밋된 요청만 통과</small></div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-chrome"><span></span><span></span><span></span></div>
+              <div class="mockup-body mockup-fail">✕ 예매 실패<br><small>버전 충돌 — 동시 요청 중복 방지 동작</small></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- COGI -->
+      <article class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-eyebrow">팀 프로젝트 (4명) · 2026.06.30 – 08.05</p>
+            <h3 class="project-title">COGI - Code Guide</h3>
+          </div>
+          <div class="project-head-actions">
+            <a class="live-link" href="http://43.202.36.123/" target="_blank" rel="noopener">라이브 데모 ↗</a>
+            <button class="expand-btn" data-target="detail-cogi" aria-expanded="false">자세히 보기</button>
+          </div>
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-mono">Spring Boot 4.1</span><span class="tag tag-mono">Java 25</span>
+          <span class="tag tag-mono">Spring Data JPA</span><span class="tag tag-mono">MariaDB</span>
+          <span class="tag tag-mono">Redis</span><span class="tag tag-mono">GitHub Webhook</span>
+          <span class="tag tag-mono">javaparser(AST)</span><span class="tag tag-mono">React</span>
+          <span class="tag tag-mono">AWS EC2</span>
+        </div>
+        <p class="project-summary">
+          GitHub PR을 자동으로 분석해 AI 코드리뷰를 제공하고, 반복되는 이슈를 "약점"으로 통계화해
+          학습카드·퀴즈·강의 추천으로 연결하는 서비스입니다. PR 리뷰 파이프라인과 리뷰 결과 대시보드,
+          팀원 초대·권한 관리, AI 모델 선택을 담당했습니다.
+        </p>
+        <p class="project-solve"><span>문제 해결</span>벤더별 응답 구조 차이(thinking 블록)로 깨지던 파싱을 배열 순회 방식으로 고쳐 멀티 벤더 전환을 안정화하고, Webhook 재전송으로 인한 중복 리뷰를 head_sha 추적으로 차단했습니다.</p>
+        <div class="project-detail" id="detail-cogi" hidden>
+          <h4>주요 문제 및 해결 과정</h4>
+          <ul class="detail-list">
+            <li><strong>AI 모델 응답 파싱 실패 — 확장 사고(thinking) 블록 대응</strong> — Claude Sonnet 5·Opus 4.8을 리뷰 모델로 연동하는 과정에서, 모델이 응답 <code>content</code> 배열 맨 앞에 thinking 블록을 추가하면서 <code>content[0]</code>을 텍스트로 가정했던 기존 로직이 빈 응답을 받아 리뷰 결과 JSON 파싱이 실패했습니다. <code>content</code> 배열 전체를 순회해 <code>type: "text"</code>인 블록만 이어 붙이는 방식으로 수정해, 여러 AI 모델(Claude/OpenAI/Gemini/Groq)을 한 인터페이스로 안정적으로 전환할 수 있게 했습니다.</li>
+            <li><strong>GitHub 웹훅 재전송으로 인한 PR 리뷰 중복 생성</strong> — GitHub 웹훅이 같은 이벤트를 재전송(retry)하면서 동일 PR에 대해 리뷰가 중복 생성되는 문제가 있었습니다. PR의 <code>head_sha</code>를 추적해 이미 처리된 커밋이면 재실행을 건너뛰도록 수정해 중복 리뷰·중복 AI 호출을 방지했습니다.</li>
+          </ul>
+          <h4>주요 구현 사항</h4>
+          <ul class="detail-list-plain">
+            <li>GitHub Webhook 수신 및 서명(<code>X-Hub-Signature-256</code>) 검증</li>
+            <li>javaparser 기반 AST 파싱으로 PR Diff에서 변경된 코드 블록만 추출해 리뷰 대상 최소화</li>
+            <li>리뷰 결과 대시보드 및 팀원 초대·권한 관리 기능 구현</li>
+            <li>Spring RestClient로 4개 AI 벤더(Claude/OpenAI/Gemini/Groq) API 직접 연동, 플랜별 모델 차등 제공</li>
+          </ul>
+          <p class="project-note">
+            요구사항정의서 기준 팀 전체 약 90개 세부 요구사항을 31개 테이블·70개 API·18개 설계 도메인으로
+            구조화했으며, 이 중 PR 리뷰 파이프라인·대시보드·팀원 관리·AI 모델 선택 도메인을 구현했습니다.
+          </p>
+        </div>
+      </article>
+
+      <!-- SPORTS PREDICT LIVE -->
+      <article class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-eyebrow">4인 팀 프로젝트 · 2026.06.01 – 06.29</p>
+            <h3 class="project-title">SPORTS PREDICT LIVE</h3>
+          </div>
+          <div class="project-head-actions">
+            <a class="live-link" href="http://43.201.107.175:9090" target="_blank" rel="noopener">라이브 데모 ↗</a>
+            <button class="expand-btn" data-target="detail-sports" aria-expanded="false">자세히 보기</button>
+          </div>
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-mono">Java 21</span><span class="tag tag-mono">Spring Boot 3.5</span>
+          <span class="tag tag-mono">QueryDSL</span><span class="tag tag-mono">WebSocket</span>
+          <span class="tag tag-mono">OAuth2</span><span class="tag tag-mono">OpenAI API</span>
+          <span class="tag tag-mono">AWS EC2</span>
+        </div>
+        <p class="project-summary">
+          야구·축구·LoL 실시간 중계 및 AI 기반 승부예측 서비스. 담당: 회원·일정·순위/기록·AI 파트(백엔드).
+          AI 기반 댓글/게시글 자동 필터링 기능도 구현했습니다.
+        </p>
+        <p class="project-solve"><span>문제 해결</span>배포 환경에서만 실패하던 이메일 인증의 원인이 AWS SMTP 포트 차단임을 확인해 해결하고, 경기당 예측 결과를 DB에 캐싱해 AI API 호출을 경기당 1회로 제한했습니다.</p>
+        <div class="project-detail" id="detail-sports" hidden>
+          <h4>주요 문제 및 해결 과정</h4>
+          <ul class="detail-list">
+            <li><strong>OAuth2 소셜 로그인 — 리다이렉트 URI 제약 우회</strong> — 카카오·구글 OAuth2 연동 시 리다이렉트 URI에 IP 형식 주소를 등록할 수 없는 정책 제약에 부딪혔습니다. 도메인을 발급받아 EC2에 연결하고, 문자 도메인 기반 리다이렉트 URI로 우회해 소셜 로그인을 정상 동작시켰습니다.</li>
+            <li><strong>배포 환경 이메일 인증 장애 — AWS 차단 포트 진단</strong> — 로컬에서 정상 동작하던 이메일 인증이 배포 환경에서만 실패했습니다. AWS가 차단하는 포트로 SMTP를 설정한 것을 확인하고, 허용 포트로 변경·재배포하여 정상 동작까지 검증했습니다.</li>
+            <li><strong>OpenAI 응답 형식 안정화</strong> — <code>response_format: json_object</code> 강제 지정으로 API 레벨에서 형식을 차단하고, 시스템 프롬프트에 응답 스키마와 종목별 무승부 허용 규칙을 명시했습니다. 파싱 실패 시 원문을 로그에 남기고 즉시 실패시키는 fail-fast 방식을 채택했습니다.</li>
+            <li><strong>API 비용 제어 — DB 캐싱 전략</strong> — 경기당 예측 결과를 DB에 저장해 캐시가 있으면 재호출하지 않는 구조로, 경기당 1회 호출로 비용을 제한했습니다. 예측 생성은 온디맨드, 결과 정산은 별도 스케줄러(1~5분 주기)로 분리했습니다.</li>
+          </ul>
+          <h4>테스트 결과</h4>
+          <div class="stat-row">
+            <div class="stat-box"><span class="stat-num">193</span><span class="stat-label">총 테스트케이스</span></div>
+            <div class="stat-box stat-green"><span class="stat-num">168</span><span class="stat-label">Pass</span></div>
+            <div class="stat-box stat-blue"><span class="stat-num">3</span><span class="stat-label">Fail→재검증 Pass</span></div>
+            <div class="stat-box stat-red"><span class="stat-num">22</span><span class="stat-label">미해결 Fail (개선 과제)</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- LMS -->
+      <article class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-eyebrow">팀 프로젝트 (6명) · 2025.09 – 2025.12</p>
+            <h3 class="project-title">LMS (학습 관리 시스템)</h3>
+          </div>
+          <button class="expand-btn" data-target="detail-lms" aria-expanded="false">자세히 보기</button>
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-mono">Spring Boot 3.3.1</span><span class="tag tag-mono">Java 17</span>
+          <span class="tag tag-mono">React 18</span><span class="tag tag-mono">TypeScript</span>
+          <span class="tag tag-mono">React Query</span><span class="tag tag-mono">Tailwind CSS</span>
+        </div>
+        <p class="project-summary">
+          6인 팀 풀스택 LMS 프로젝트. 학생 도메인 핵심 기능(수강 신청, 강의 조회, 과제 제출,
+          커뮤니티 게시판)을 백엔드 API 설계부터 프론트엔드까지 전담했습니다.
+        </p>
+        <p class="project-solve"><span>문제 해결</span>Security 필터 체인 실행 순서를 추적해 403 Forbidden 원인을 규명했고, Git Feature Branch 전략과 PR 리뷰를 팀 규칙으로 정착시켜 재작업을 줄였습니다.</p>
+        <div class="project-detail" id="detail-lms" hidden>
+          <h4>주요 문제 및 해결 과정</h4>
+          <ul class="detail-list">
+            <li><strong>협업 프로세스 개선</strong> — Git Feature Branch 전략을 제안·도입하고 PR 코드 리뷰를 팀 규칙으로 정착시켜 병합 충돌로 인한 재작업을 줄였으며, 코드 변경 이력의 맥락을 투명하게 관리했습니다.</li>
+            <li><strong>Spring Security &amp; JWT 인가 에러 해결</strong> — 403 Forbidden 에러의 원인을 Security 필터 체인 실행 순서와 인증 객체 생성 흐름 분석으로 찾아내고, 예외 처리 로직과 토큰 검증 흐름을 정교화했습니다.</li>
+            <li><strong>크로스 도메인 이슈 &amp; 타입 안정성</strong> — CORS 문제를 Spring Boot 글로벌 설정으로 해결하고, TypeScript Interface로 서버 응답 타입을 컴파일 단계에서 사전 검증해 런타임 에러를 방지했습니다.</li>
+          </ul>
+          <h4>주요 구현 사항</h4>
+          <ul class="detail-list-plain">
+            <li>Spring Security·JWT 기반 다중 역할(학생/강사/관리자) 인가 및 접근 권한 제어</li>
+            <li>Multipart 처리를 통한 과제 파일 업로드·다운로드 API</li>
+            <li>FSD(Feature-Sliced Design) 구조 적용 및 React Query 기반 서버 상태 관리</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= OTHER PROJECTS ================= -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="kicker">SIDE PROJECTS</p>
+      <h2 class="section-title-serif">기타 · 데이터 분석 프로젝트</h2>
+      <p class="section-desc">다양한 환경과 언어를 다루며 개발 시야를 넓힌 사이드 프로젝트입니다.</p>
+
+      <div class="side-grid">
+        <div class="side-card">
+          <div class="side-card-head">
+            <h3>Weather Dashboard</h3>
+            <a class="live-link" href="https://hongsungchan88.github.io/weather-dashboard/" target="_blank" rel="noopener">라이브 ↗</a>
+          </div>
+          <p class="side-meta">개인 · React 19, TypeScript, Zustand</p>
+          <p>OpenWeatherMap API 연동 대시보드. TypeScript로 타입 안정성을 확보하고 Zustand로 전역 상태를 관리했습니다.</p>
+        </div>
+        
+        <div class="side-card">
+          <h3>서울시 아파트 실거래가 분석</h3>
+          <p class="side-meta">개인 · R, dplyr, ggplot2</p>
+          <p>134,961건 데이터를 전처리해 79,039건 확보, K-means 군집 분석과 다중선형 회귀로 가격 예측 모델을 구축했습니다.</p>
+        </div>
+        <div class="side-card">
+          <h3>모기 지수 PCA 예측 모델링</h3>
+          <p class="side-meta">개인 · Python, Scikit-learn</p>
+          <p>서울시 모기 지수 데이터를 MinMaxScaler로 정규화 후 PCA(분산 설명력 83.81%)로 축소해 선형 회귀 예측 모델을 구현했습니다.</p>
+        </div>
+        
+        <div class="side-card">
+          <h3>Elite Football Kits</h3>
+          <p class="side-meta">개인 · PHP, Laravel, MariaDB</p>
+          <p>해외 축구 유니폼 이커머스. Laravel Eloquent ORM으로 재고·주문·결제 파이프라인을 구현했습니다.</p>
+        </div>
+        
+            </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact-section" id="contact">
+    <div class="section-inner">
+      <p class="kicker">CONTACT</p>
+      <h2 class="section-title-serif">함께 일할 기회를 기다립니다</h2>
+      <div class="contact-grid">
+        <a href="mailto:sungchan0820@gmail.com" class="contact-card">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">sungchan0820@gmail.com</span>
+        </a>
+        <a href="tel:010-7287-8427" class="contact-card">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">010-7287-8427</span>
+        </a>
+        <a href="https://github.com/hongsungchan88" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">hongsungchan88 ↗</span>
+        </a>
+        <a href="https://app.notion.com/p/3818bb8f4e6e8151afd7d6b98aa9af19" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-label">Notion 상세 포트폴리오</span>
+          <span class="contact-value">프로젝트 스크린샷 · 전체 문서 ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 홍성찬. Built from a Notion portfolio.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
