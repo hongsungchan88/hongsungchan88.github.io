@@ -1,0 +1,5 @@
+{
+  "_note": "리다이렉트 설정 전 S3 정적 웹사이트 원래 구성. 되돌리려면 아래를 restore.json으로 저장하고 다음을 실행: aws s3api put-bucket-website --bucket hongsungchan-portfolio --website-configuration file://restore.json",
+  "IndexDocument": { "Suffix": "index.html" },
+  "ErrorDocument": { "Key": "index.html" }
+}
