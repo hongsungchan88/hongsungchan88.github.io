@@ -342,7 +342,7 @@
         <div class="project-detail" id="detail-cogi" hidden>
           <h4>주요 문제 및 해결 과정</h4>
           <ul class="detail-list">
-            <li><strong>AI 모델 응답 파싱 실패 — 확장 사고(thinking) 블록 대응</strong> — Claude Sonnet 5·Opus 4.8을 리뷰 모델로 연동하는 과정에서, 모델이 응답 <code>content</code> 배열 맨 앞에 thinking 블록을 추가하면서 <code>content[0]</code>을 텍스트로 가정했던 기존 로직이 빈 응답을 받아 리뷰 결과 JSON 파싱이 실패했습니다. <code>content</code> 배열 전체를 순회해 <code>type: "text"</code>인 블록만 이어 붙이는 방식으로 수정해, 여러 AI 모델(Claude/OpenAI/Gemini/Groq)을 한 인터페이스로 안정적으로 전환할 수 있게 했습니다.</li>
+            <li><strong>AI 모델 응답 파싱 실패 — 확장 사고(thinking) 블록 대응</strong> — Claude 모델을 리뷰 모델로 연동하는 과정에서 모델이 응답 <code>content</code> 배열 맨 앞에 thinking 블록을 추가하면서 <code>content[0]</code>을 텍스트로 가정했던 기존 로직이 빈 응답을 받아 리뷰 결과 JSON 파싱이 실패했습니다. <code>content</code> 배열 전체를 순회해 <code>type: "text"</code>인 블록만 이어 붙이는 방식으로 수정해, 여러 AI 모델(Claude/OpenAI/Gemini/Groq)을 한 인터페이스로 안정적으로 전환할 수 있게 했습니다.</li>
             <li><strong>GitHub 웹훅 재전송으로 인한 PR 리뷰 중복 생성</strong> — GitHub 웹훅이 같은 이벤트를 재전송(retry)하면서 동일 PR에 대해 리뷰가 중복 생성되는 문제가 있었습니다. PR의 <code>head_sha</code>를 추적해 이미 처리된 커밋이면 재실행을 건너뛰도록 수정해 중복 리뷰·중복 AI 호출을 방지했습니다.</li>
           </ul>
           <h4>주요 구현 사항</h4>
