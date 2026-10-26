@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>홍성찬 — 백엔드 개발자 포트폴리오</title>
-<meta name="description" content="운영 환경을 먼저 생각하는 백엔드 개발자 홍성찬의 포트폴리오. Spring Boot, JPA, 동시성 제어, AWS 클라우드 프로젝트 경험.">
+<meta name="description" content="문제를 재현하고 숫자로 확인하는 백엔드 개발자 홍성찬의 포트폴리오. Spring Boot, JPA, 동시성 제어, AWS 클라우드 프로젝트 경험.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,15 +35,14 @@
     <div class="hero-inner">
       <p class="eyebrow">BACKEND DEVELOPER · SPRING BOOT</p>
       <h1 class="hero-title">
-        운영 환경을 먼저 생각하는<br>
+        문제를 재현하고 숫자로 확인하는<br>
         백엔드 개발자, <span class="hero-name">홍성찬</span>입니다.
       </h1>
       <p class="hero-desc">
-        ㈜현대벤디스에서 7개월간 운영 중인 Spring 서비스를 유지보수하며,
-        실제 서비스 환경을 고려해 코드를 작성해 왔습니다.
-        동시성 제어와 성능 최적화에 관심이 많아, 부하 테스트로 문제를 직접
-        재현하고 검증하며 해결합니다. 최근에는 GitHub Webhook과 멀티 LLM API를 엮은
-        AI 코드리뷰 파이프라인을 설계하며 AI를 서비스에 안정적으로 붙이는 일을 다뤘습니다.
+        ㈜현대벤디스에서 7개월간 운영 중인 Spring 서비스를 유지보수했습니다.
+        티켓 예매 시스템에서는 동시 요청 1,000건으로 중복 예매를 재현해 막았고
+        다시 측정하다 드러난 500 응답과 MySQL 데드락까지 로그로 원인을 찾아 고쳤습니다.
+        COGI에서는 GitHub Webhook과 AI API 4종을 묶은 코드리뷰 파이프라인을 만들었습니다.
       </p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">프로젝트 보러가기</a>
@@ -93,7 +92,7 @@
 
         <p class="demo-footnote">
           * 브라우저에서 동작하는 개념 시뮬레이션입니다. 실제 검증은 JMeter로 1,000개 동시 요청을 발생시켜
-          수행했으며, 자세한 과정은 <a href="#ticket">티켓 예매 시스템 프로젝트</a>에서 확인할 수 있습니다.
+          수행했으며 자세한 과정은 <a href="#ticket">티켓 예매 시스템 프로젝트</a>에서 확인할 수 있습니다.
         </p>
       </div>
     </div>
@@ -107,14 +106,13 @@
 
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-date">2020.11 – 2021.05<br><span>7개월 · 특성화고 선취업</span></div>
+          <div class="timeline-date">2020.11 – 2021.05<br><span>7개월</span></div>
           <div class="timeline-body">
             <h3>㈜현대벤디스 · 제품본부</h3>
             <p>
-              대경정보산업고 3학년 때 선취업 전형으로 입사해, 운영 중인 Spring 기반 웹
-              애플리케이션의 요구사항 분석·신규 기능 추가·유지보수를 담당했습니다. 프로덕션 코드를 다루며 기존 서비스에 미치는 영향(Side-Effect)을
-              최소화하는 안전한 수정 방식을 익혔고, 실무의 형상 관리·배포 프로세스를 경험하며
-              가독성과 유지보수성 중심의 코드 작성 습관을 갖췄습니다.
+              운영 중인 Spring 기반 웹 애플리케이션의 요구사항 분석, 기능 추가, 유지보수를 맡았습니다.
+              코드를 고치기 전에 연관 모듈과 영향 범위부터 확인해 배포 후 기존 기능 장애 없이 요구사항을 반영했고
+              Git 형상관리와 배포 과정을 실무에서 처음 겪었습니다.
             </p>
           </div>
         </div>
@@ -203,7 +201,7 @@
             <span class="tag tag-blue">Java</span><span class="tag tag-blue">Spring Boot</span>
             <span class="tag tag-blue">Spring Security</span><span class="tag tag-blue">JPA</span>
             <span class="tag tag-blue">JWT</span><span class="tag tag-blue">REST API</span>
-            <span class="tag tag-blue">QueryDSL</span><span class="tag tag-blue">WebSocket</span>
+            <span class="tag tag-blue">MyBatis (교육 실습)</span>
           </div>
         </div>
         <div class="stack-card">
@@ -280,25 +278,28 @@
           <span class="tag tag-mono">Apache JMeter</span>
         </div>
         <p class="project-summary">
-          다수의 사용자가 동시에 좌석을 예매하는 상황을 가정하고, 동시성 제어를 직접 구현한
+          다수의 사용자가 동시에 좌석을 예매하는 상황을 가정하고 동시성 제어를 직접 구현한
           콘서트·공연 좌석 예매 시스템입니다. JPA Optimistic Lock으로 Race Condition을 해결하고,
           JMeter 부하 테스트로 실제 동작을 검증했습니다.
         </p>
-        <p class="project-solve"><span>문제 해결</span>JMeter 1,000개 동시 요청으로 정합성 붕괴를 먼저 재현했습니다. 읽기 비중이 높은 서비스 특성을 근거로 Optimistic Lock을 택했습니다. 중복 예매 0건을 검증했습니다.</p>
+        <p class="project-solve"><span>문제 해결</span>JMeter 동시 요청 1,000건으로 정합성 붕괴를 재현하고 Optimistic Lock으로 막았습니다. 다시 측정해 보니 경쟁에서 진 요청이 500으로 응답하고 있어 409로 바꿨고 그 뒤 드러난 MySQL 데드락은 쿼리 실행 순서를 바꿔 해결했습니다. 서버 도달 기준 500 응답은 478건에서 0건이 됐습니다.</p>
 
         <div class="project-detail" id="detail-ticket" hidden>
           <h4>주요 문제 및 해결 과정</h4>
           <ul class="detail-list">
             <li><strong>동시성 이슈 해결 및 테스트</strong> — JMeter로 1,000개의 동시 요청 부하 테스트를 진행해, 락 미적용 상태에서는 하나의 좌석에 동시 요청 수만큼 예매가 중복 성공하는 정합성 붕괴를 직접 재현했습니다. JPA <code>@Version</code> 기반 Optimistic Lock 적용 후에는 최초 커밋된 트랜잭션만 성공하고 나머지는 버전 충돌 예외로 처리되어, 동일 조건에서 중복 예매 0건을 검증했습니다.</li>
-            <li><strong>Optimistic Lock 채택 이유</strong> — 예매 시스템 특성상 좌석 선점(Update)보다 조회(Read) 비율이 압도적으로 높을 것으로 예상해, DB에 직접 락을 거는 Pessimistic Lock 대신 애플리케이션 단에서 버전을 관리하는 Optimistic Lock을 채택하여 DB 데드락 위험과 성능 저하를 최소화했습니다.</li>
-            <li><strong>버전 마이그레이션 이슈 해결</strong> — Spring Boot 4.x 도입 시 3.x와 달라진 설정·의존성 충돌을 공식 마이그레이션 가이드를 참고해 해결하고, 변경 사항을 문서로 정리했습니다.</li>
+            <li><strong>Optimistic Lock 채택 이유</strong> — 예매 시스템 특성상 좌석 선점(Update)보다 조회(Read) 비율이 압도적으로 높을 것으로 예상해, DB에 직접 락을 거는 Pessimistic Lock 대신 애플리케이션 단에서 버전을 관리하는 Optimistic Lock을 채택해 조회 요청까지 잠금을 기다리는 상황을 피했습니다.</li>
+            <li><strong>경쟁에서 진 요청이 500으로 응답</strong> — 수정 전 측정에서 서버에 도달한 479건 중 478건이 500이었습니다. 낙관적 락 예외는 커밋 시점에 발생해 서비스 코드 안에서 잡을 수 없어서 <code>@RestControllerAdvice</code>로 409 Conflict를 돌려주게 했습니다. 좌석은 한 명만 가질 수 있어 재시도는 넣지 않았습니다.</li>
+            <li><strong>MySQL 데드락</strong> — 409 처리 후 재측정에서 500이 1건 남았고 서버 로그에 Deadlock found가 찍혀 있었습니다. 원인을 따라가 보니 예매 ID가 IDENTITY라 INSERT가 먼저 실행되며 외래키 검사로 좌석 행에 공유 락이 걸리고 커밋 때 좌석 UPDATE가 배타 락을 기다리면서 트랜잭션끼리 엇갈렸습니다. <code>holdSeat()</code> 직후 <code>saveAndFlush</code>로 좌석 UPDATE를 먼저 실행하게 바꾼 뒤 서버 도달 399건 기준 성공 1·409 398·500 0을 확인했습니다.</li>
+            <li><strong>미결제 좌석 복구 버그</strong> — 5분 미결제 자동 취소 로직이 <code>releaseSeat()</code> 대신 <code>reserveSeat()</code>를 호출해 좌석이 판매 완료로 남던 문제를 고치고 단위 테스트로 검증했습니다.</li>
+            <li><strong>버전 마이그레이션 이슈 해결</strong> — Spring Boot 4.x 도입 시 3.x와 달라진 설정·의존성 충돌을 공식 마이그레이션 가이드를 참고해 해결하고 변경 사항을 문서로 정리했습니다.</li>
           </ul>
           <h4>주요 구현 사항</h4>
           <ul class="detail-list-plain">
             <li>Spring Security와 JWT를 활용한 사용자 인증 및 API 접근 권한 제어</li>
             <li>Spring Data JPA를 활용한 공연·좌석 관리 REST API 설계</li>
             <li>JPA <code>@Version</code>을 통한 Optimistic Lock 구현으로 중복 예매 방지</li>
-            <li>Apache JMeter를 활용한 1,000개 동시 요청 테스트 및 검증 완료</li>
+            <li>Apache JMeter 부하 테스트와 CountDownLatch 동시성 테스트로 수정 전후 검증</li>
           </ul>
           <div class="mockup-row">
             <div class="mockup-card">
@@ -334,11 +335,11 @@
           <span class="tag tag-mono">AWS EC2</span>
         </div>
         <p class="project-summary">
-          GitHub PR을 자동으로 분석해 AI 코드리뷰를 제공하고, 반복되는 이슈를 "약점"으로 통계화해
-          학습카드·퀴즈·강의 추천으로 연결하는 서비스입니다. PR 리뷰 파이프라인과 리뷰 결과 대시보드,
+          GitHub PR을 자동으로 분석해 AI 코드리뷰를 제공하고 반복되는 이슈를 "약점"으로 통계화해
+          학습카드·퀴즈·강의 추천으로 연결하는 서비스입니다. PR 리뷰 파이프라인과 리뷰 결과 집계·이력 화면,
           팀원 초대·권한 관리, AI 모델 선택을 담당했습니다.
         </p>
-        <p class="project-solve"><span>문제 해결</span>벤더별 응답 구조 차이(thinking 블록)로 파싱이 깨졌습니다. 배열 순회 방식으로 고쳐 멀티 벤더 전환을 안정화했습니다. Webhook 재전송으로 인한 중복 리뷰는 head_sha 추적으로 차단했습니다.</p>
+        <p class="project-solve"><span>문제 해결</span>Claude 응답 앞에 붙는 thinking 블록 때문에 파싱이 깨졌습니다. 배열 순회 방식으로 고쳐 멀티 벤더 전환을 안정화했습니다. Webhook 재전송으로 인한 중복 리뷰는 head_sha 추적으로 차단했습니다.</p>
         <div class="project-detail" id="detail-cogi" hidden>
           <h4>주요 문제 및 해결 과정</h4>
           <ul class="detail-list">
@@ -349,12 +350,11 @@
           <ul class="detail-list-plain">
             <li>GitHub Webhook 수신 및 서명(<code>X-Hub-Signature-256</code>) 검증</li>
             <li>javaparser 기반 AST 파싱으로 PR Diff에서 변경된 코드 블록만 추출해 리뷰 대상 최소화</li>
-            <li>리뷰 결과 대시보드 및 팀원 초대·권한 관리 기능 구현</li>
+            <li>이슈 카테고리 5종 집계 쿼리와 리뷰 이력 화면, GitHub 아이디 기반 팀원 초대·수락·강퇴·소유자 양도와 OWNER/MEMBER 권한</li>
             <li>Spring RestClient로 4개 AI 벤더(Claude/OpenAI/Gemini/Groq) API 직접 연동, 플랜별 모델 차등 제공</li>
           </ul>
           <p class="project-note">
-            요구사항정의서 기준 팀 전체 약 90개 세부 요구사항을 31개 테이블·70개 API·18개 설계 도메인으로
-            구조화했으며, 이 중 PR 리뷰 파이프라인·대시보드·팀원 관리·AI 모델 선택 도메인을 구현했습니다.
+            팀 전체 엔티티 34개·API 122개 규모 서비스에서 PR 리뷰 파이프라인·팀원 관리·AI 모델 선택 도메인을 맡았습니다 (본인 커밋 58건, 머지 제외).
           </p>
         </div>
       </article>
@@ -373,24 +373,24 @@
         </div>
         <div class="tag-row">
           <span class="tag tag-mono">Java 21</span><span class="tag tag-mono">Spring Boot 3.5</span>
-          <span class="tag tag-mono">QueryDSL</span><span class="tag tag-mono">WebSocket</span>
+          <span class="tag tag-mono">Spring Security</span><span class="tag tag-mono">JWT</span>
           <span class="tag tag-mono">OAuth2</span><span class="tag tag-mono">OpenAI API</span>
           <span class="tag tag-mono">AWS EC2</span>
         </div>
         <p class="project-summary">
-          야구·축구·LoL 실시간 중계 및 AI 기반 승부예측 서비스. 담당: 회원·일정·순위/기록·AI 파트(백엔드).
-          AI 기반 댓글/게시글 자동 필터링 기능도 구현했습니다.
+          야구·축구·LoL 실시간 중계와 AI 승부예측을 제공하는 서비스입니다. 회원·일정·순위/기록·AI 예측 파트 백엔드를 맡았고
+          기능 정의서 91건을 작성했습니다 (본인 커밋 113건, 팀 내 최다).
         </p>
-        <p class="project-solve"><span>문제 해결</span>배포 환경에서만 실패하던 이메일 인증은 AWS SMTP 포트 차단이 원인임을 확인해 해결했습니다. 경기당 예측 결과는 DB에 캐싱해 AI API 호출을 경기당 1회로 제한했습니다.</p>
+        <p class="project-solve"><span>문제 해결</span>배포 환경에서만 실패하던 이메일 인증은 AWS 보안그룹에서 막힌 포트로 SMTP를 설정한 것이 원인이었습니다. 경기당 예측 결과는 DB에 캐싱해 AI API 호출을 경기당 1회로 제한했습니다.</p>
         <div class="project-detail" id="detail-sports" hidden>
           <h4>주요 문제 및 해결 과정</h4>
           <ul class="detail-list">
-            <li><strong>OAuth2 소셜 로그인 — 리다이렉트 URI 제약 우회</strong> — 카카오·구글 OAuth2 연동 시 리다이렉트 URI에 IP 형식 주소를 등록할 수 없는 정책 제약에 부딪혔습니다. 도메인을 발급받아 EC2에 연결하고, 문자 도메인 기반 리다이렉트 URI로 우회해 소셜 로그인을 정상 동작시켰습니다.</li>
-            <li><strong>배포 환경 이메일 인증 장애 — AWS 차단 포트 진단</strong> — 로컬에서 정상 동작하던 이메일 인증이 배포 환경에서만 실패했습니다. AWS가 차단하는 포트로 SMTP를 설정한 것을 확인하고, 허용 포트로 변경·재배포하여 정상 동작까지 검증했습니다.</li>
-            <li><strong>OpenAI 응답 형식 안정화</strong> — <code>response_format: json_object</code> 강제 지정으로 API 레벨에서 형식을 차단하고, 시스템 프롬프트에 응답 스키마와 종목별 무승부 허용 규칙을 명시했습니다. 파싱 실패 시 원문을 로그에 남기고 즉시 실패시키는 fail-fast 방식을 채택했습니다.</li>
-            <li><strong>API 비용 제어 — DB 캐싱 전략</strong> — 경기당 예측 결과를 DB에 저장해 캐시가 있으면 재호출하지 않는 구조로, 경기당 1회 호출로 비용을 제한했습니다. 예측 생성은 온디맨드, 결과 정산은 별도 스케줄러(1~5분 주기)로 분리했습니다.</li>
+            <li><strong>소셜 로그인 토큰 URL 노출</strong> — 소셜 로그인 후 JWT를 URL 쿼리스트링으로 넘기고 있었습니다. 쿼리스트링은 서버 로그·브라우저 기록·Referer에 남을 수 있어 토큰 전달 위치를 URL fragment(#)로 옮겼습니다.</li>
+            <li><strong>배포 환경 이메일 인증 장애 — AWS 차단 포트 진단</strong> — 로컬에서 정상 동작하던 이메일 인증이 배포 환경에서만 실패했습니다. AWS가 차단하는 포트로 SMTP를 설정한 것을 확인하고 허용 포트로 변경·재배포하여 정상 동작까지 검증했습니다.</li>
+            <li><strong>OpenAI 응답 형식 안정화</strong> — <code>response_format: json_object</code> 강제 지정으로 API 레벨에서 형식을 차단하고 시스템 프롬프트에 응답 스키마와 종목별 무승부 허용 규칙을 명시했습니다.</li>
+            <li><strong>API 비용 제어 — DB 캐싱 전략</strong> — 경기당 예측 결과를 DB에 저장해 캐시가 있으면 재호출하지 않는 구조로, 경기당 1회 호출로 비용을 제한했습니다. 야구는 캐시 유효성을 검사해 무효면 다시 생성합니다.</li>
           </ul>
-          <h4>테스트 결과</h4>
+          <h4>팀 테스트 결과</h4>
           <div class="stat-row">
             <div class="stat-box"><span class="stat-num">193</span><span class="stat-label">총 테스트케이스</span></div>
             <div class="stat-box stat-green"><span class="stat-num">168</span><span class="stat-label">Pass</span></div>
@@ -399,45 +399,6 @@
           </div>
         </div>
       </article>
-
-      <!-- LMS -->
-      <article class="project-card">
-        <div class="project-head">
-          <div>
-            <p class="project-eyebrow">팀 프로젝트 (6명) · 2025.09 – 2025.12</p>
-            <h3 class="project-title">LMS (학습 관리 시스템)</h3>
-          </div>
-          <div class="project-head-actions">
-            <a class="live-link" href="https://github.com/hongsungchan88/Lms-Fullstack" target="_blank" rel="noopener">코드 보기 ↗</a>
-            <button class="expand-btn" data-target="detail-lms" aria-expanded="false">자세히 보기</button>
-          </div>
-        </div>
-        <div class="tag-row">
-          <span class="tag tag-mono">Spring Boot 3.3.1</span><span class="tag tag-mono">Java 17</span>
-          <span class="tag tag-mono">React 18</span><span class="tag tag-mono">TypeScript</span>
-          <span class="tag tag-mono">React Query</span><span class="tag tag-mono">Tailwind CSS</span>
-        </div>
-        <p class="project-summary">
-          6인 팀 풀스택 LMS 프로젝트. 학생 도메인 핵심 기능(수강 신청, 강의 조회, 과제 제출,
-          커뮤니티 게시판)을 백엔드 API 설계부터 프론트엔드까지 전담했습니다.
-        </p>
-        <p class="project-solve"><span>문제 해결</span>Security 필터 체인 실행 순서를 추적해 403 Forbidden 원인을 규명했습니다. Git Feature Branch 전략과 PR 리뷰는 팀 규칙으로 정착시켜 재작업을 줄였습니다.</p>
-        <div class="project-detail" id="detail-lms" hidden>
-          <h4>주요 문제 및 해결 과정</h4>
-          <ul class="detail-list">
-            <li><strong>협업 프로세스 개선</strong> — Git Feature Branch 전략을 제안·도입하고 PR 코드 리뷰를 팀 규칙으로 정착시켜 병합 충돌로 인한 재작업을 줄였으며, 코드 변경 이력의 맥락을 투명하게 관리했습니다.</li>
-            <li><strong>Spring Security &amp; JWT 인가 에러 해결</strong> — 403 Forbidden 에러의 원인을 Security 필터 체인 실행 순서와 인증 객체 생성 흐름 분석으로 찾아내고, 예외 처리 로직과 토큰 검증 흐름을 정교화했습니다.</li>
-            <li><strong>크로스 도메인 이슈 &amp; 타입 안정성</strong> — CORS 문제를 Spring Boot 글로벌 설정으로 해결하고, TypeScript Interface로 서버 응답 타입을 컴파일 단계에서 사전 검증해 런타임 에러를 방지했습니다.</li>
-          </ul>
-          <h4>주요 구현 사항</h4>
-          <ul class="detail-list-plain">
-            <li>Spring Security·JWT 기반 다중 역할(학생/강사/관리자) 인가 및 접근 권한 제어</li>
-            <li>Multipart 처리를 통한 과제 파일 업로드·다운로드 API</li>
-            <li>FSD(Feature-Sliced Design) 구조 적용 및 React Query 기반 서버 상태 관리</li>
-          </ul>
-        </div>
-      </article>
-
     </div>
   </section>
 
