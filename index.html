@@ -388,12 +388,12 @@
             <li><strong>OpenAI 응답 형식 안정화</strong> — <code>response_format: json_object</code> 강제 지정으로 API 레벨에서 형식을 차단하고 시스템 프롬프트에 응답 스키마와 종목별 무승부 허용 규칙을 명시했습니다.</li>
             <li><strong>API 비용 제어 — DB 캐싱 전략</strong> — 경기당 예측 결과를 DB에 저장해 캐시가 있으면 재호출하지 않는 구조로, 경기당 1회 호출로 비용을 제한했습니다. 야구는 캐시 유효성을 검사해 무효면 다시 생성합니다.</li>
           </ul>
-          <h4>팀 테스트 결과</h4>
+          <h4>테스트 결과 (직접 수행)</h4>
           <div class="stat-row">
-            <div class="stat-box"><span class="stat-num">193</span><span class="stat-label">총 테스트케이스</span></div>
-            <div class="stat-box stat-green"><span class="stat-num">168</span><span class="stat-label">Pass</span></div>
-            <div class="stat-box stat-blue"><span class="stat-num">3</span><span class="stat-label">Fail→재검증 Pass</span></div>
-            <div class="stat-box stat-red"><span class="stat-num">22</span><span class="stat-label">미해결 Fail (개선 과제)</span></div>
+            <div class="stat-box"><span class="stat-num">181</span><span class="stat-label">총 테스트케이스</span></div>
+            <div class="stat-box stat-blue"><span class="stat-num">17</span><span class="stat-label">테스트 영역</span></div>
+            <div class="stat-box stat-green"><span class="stat-num">90</span><span class="stat-label">Pass</span></div>
+            <div class="stat-box stat-red"><span class="stat-num">23</span><span class="stat-label">Fail (재검증 예정)</span></div>
           </div>
         </div>
       </article>
